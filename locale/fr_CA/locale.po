@@ -1,0 +1,2 @@
+msgid "plugins.generic.hideDiscussionEmailBody.discussion.updated"
+msgstr "{$senderName} a envoyé un nouveau message."
