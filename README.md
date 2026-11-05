@@ -1,6 +1,6 @@
 # Hide Discussion Email Body Plugin
 
-OJS, OMP, OPS 3.4
+OJS, OMP, OPS 3.5
 
 This plugin hides the body of discussion notification emails ensuring that users will respond to your discussion messages using the discussion tool.
 

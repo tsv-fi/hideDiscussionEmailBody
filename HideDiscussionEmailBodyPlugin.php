@@ -1,7 +1,22 @@
 <?php
 
+/**
+ * @file HideDiscussionEmailBodyPlugin.php
+ *
+ * Copyright (c) 2014-2026 Simon Fraser University
+ * Copyright (c) 2014-2026 John Willinsky
+ * Distributed under the GNU GPL v3. For full terms see the file docs/COPYING.
+ *
+ * @package plugins.generic.hideDiscussionEmailBody
+ *
+ * @class HideDiscussionEmailBodyPlugin
+ *
+ * @brief HideDiscussionEmailBodyPlugin main class
+ */
+
 namespace APP\plugins\generic\hideDiscussionEmailBody;
 
+use PKP\mail\Mailable;
 use PKP\plugins\GenericPlugin;
 use PKP\plugins\Hook;
 
@@ -18,9 +33,8 @@ class HideDiscussionEmailBodyPlugin extends GenericPlugin
         return false;
     }
 
-    public function handleMailableBuild(string $hookName, array $args): bool
+    public function handleMailableBuild(string $hookName, Mailable $mailable): bool
     {
-        $mailable = $args['mailable'];
         $class = get_class($mailable);
         if (
             str_contains($class, 'DiscussionCopyediting') ||
