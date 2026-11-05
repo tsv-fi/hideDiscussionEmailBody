@@ -2,6 +2,7 @@
 
 namespace APP\plugins\generic\hideDiscussionEmailBody;
 
+use PKP\mail\Mailable;
 use PKP\plugins\GenericPlugin;
 use PKP\plugins\Hook;
 
@@ -18,9 +19,8 @@ class HideDiscussionEmailBodyPlugin extends GenericPlugin
         return false;
     }
 
-    public function handleMailableBuild(string $hookName, array $args): bool
+    public function handleMailableBuild(string $hookName, Mailable $mailable): bool
     {
-        $mailable = $args['mailable'];
         $class = get_class($mailable);
         if (
             str_contains($class, 'DiscussionCopyediting') ||
