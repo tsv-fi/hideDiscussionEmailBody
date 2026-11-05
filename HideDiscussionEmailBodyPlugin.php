@@ -42,18 +42,26 @@ class HideDiscussionEmailBodyPlugin extends GenericPlugin
             str_contains($class, 'DiscussionReview') ||
             str_contains($class, 'DiscussionSubmission')
         ) {
-            $mailable->body(__("plugins.generic.hideDiscussionEmailBody.discussion.updated"));
+            $date = date('Y-m-d H:i', time());
+
+            $mailable->body(
+                __('plugins.generic.hideDiscussionEmailBody.discussion.updated')
+                . '<p><small>' . $date . '</small></p>'
+            );
+
+            // Remove attachments
+            $mailable->attachments = [];
         }
         return Hook::CONTINUE;
     }
 
     public function getDisplayName(): string
     {
-        return 'Hide discussion messages from emails';
+        return __('plugins.generic.hideDiscussionEmailBody.displayName');
     }
 
     public function getDescription(): string
     {
-        return 'Hides the discussion message from the email notification send to users and forces the user to login and answer to the discussion message using the discussion tool.';
+        return __('plugins.generic.hideDiscussionEmailBody.description');
     }
 }
